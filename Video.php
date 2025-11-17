@@ -7,7 +7,7 @@ sort($files, SORT_NATURAL | SORT_FLAG_CASE);
 if (!$files)
   die("Keine Video-Dateien gefunden.");
 
-$current = isset($_GET['pic']) ? intval($_GET['pic']) : 0;
+$current = isset($_GET['vid']) ? intval($_GET['vid']) : 0;
 $current = max(0, min($current, count($files) - 1));
 
 $self = htmlspecialchars($_SERVER['SCRIPT_NAME'], ENT_QUOTES, 'UTF-8');
@@ -90,7 +90,7 @@ $self = htmlspecialchars($_SERVER['SCRIPT_NAME'], ENT_QUOTES, 'UTF-8');
 <body>
 
   <a class="arrow arrow-left <?= ($current == 0) ? 'disabled' : '' ?>"
-    href="<?= $self ?>?pic=<?= max(0, $current - 1) ?>" aria-label="Zurück">◀</a>
+    href="<?= $self ?>?vid=<?= max(0, $current - 1) ?>" aria-label="Zurück">◀</a>
 
   <div class="wrapper">
     <div class="inner">
@@ -102,7 +102,7 @@ $self = htmlspecialchars($_SERVER['SCRIPT_NAME'], ENT_QUOTES, 'UTF-8');
   </div>
 
   <a class="arrow arrow-right <?= ($current >= count($files) - 1) ? 'disabled' : '' ?>"
-    href="<?= $self ?>?pic=<?= min(count($files) - 1, $current + 1) ?>" aria-label="Vor">▶</a>
+    href="<?= $self ?>?vid=<?= min(count($files) - 1, $current + 1) ?>" aria-label="Vor">▶</a>
 
   <script>
     const vid = document.getElementById('vid');
@@ -142,5 +142,6 @@ $self = htmlspecialchars($_SERVER['SCRIPT_NAME'], ENT_QUOTES, 'UTF-8');
   </script>
 
 </body>
+
 
 </html>
